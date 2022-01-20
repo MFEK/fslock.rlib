@@ -3,12 +3,19 @@
 API to use files as a lock. Supports non-std crates by disabling feature
 `std`.
 
+**This is an MFEK fork of an upstream project.**
+
 # Types
 Currently, only one type is provided: [`LockFile`]. It does not destroy the
 file after closed and behaviour on locking different file handles owned by
 the same process is different between Unix and Windows, unless you activate the
 `multilock` feature, which enables the `open_excl` method that locks files per
 file descriptor/handle on all platforms.
+
+# MFEK fork additions
+
+* `LockFile::raw`
+* `(&mut LockFile) as Into::<File>`
 
 # Example
 ```rust
